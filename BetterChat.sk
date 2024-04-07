@@ -30,13 +30,23 @@ options:
 # More configuration
     skriptname: BetterChat.sk
 
-    bypassAntiSwear: betterchat.antiswear.bypass
+    bypassAntiSwear: betterchat.antiswear.bypass # First bypass
 
     cleachateffect: betterchat.clearchat.affect
 
     # end of config
 
     version: V1.0
+# Start of the antiswear configuration
+    BypassPermission: betterchat.antiswear.bypass #Set the bypass
+
+    NotifyPermission: betterchat.notify
+
+
+    AlertMessage: true
+
+
+    Censored: false
 
 
 
@@ -76,6 +86,34 @@ on tab complete of "/betterchat":
     set tab completions for position 1 to "Reload" and "AntiSwear-Bypass" and "ClearChat"
 
 
+
+    # This is the start of your antiswear configuration
+	
+on chat:
+	if message contains "shit" or "fuck" or "gay" or "idiot" or "butt" or "jerk" or "damn" or "shit" or "fack" or "bastard" or "mother fucker" or "fucker" or "dick" or "cock" or "bitch" or "cunt" or "fuck off" or "nigga" or "nigger" or "stfu" or "shut the fuck up" or "fck" or "wtf" or "what the fuck" or "fuck you" or "fok" or "homo" or "asf" or "pennis" or "rape" or "porn" or "prn" or "peni" or "sex" or "piss" or "ass" or "sht" or "feg" or "tits" or "fyc" or "anal" or "fap" or "ffs" or "sx" or "aids" or "mofo" or "niggah" or "lesbian" or "ngga" or "dumbass" or "dumb" or "fucking" or "pussy" or "pussies" or "cancer":
+		if player has permission "{@BypassPermission}":
+			stop
+		if {@Censored} is true:
+			cancel the event
+		if {@AlertMessage} is true:
+			send "{@prefix} You will be muted if you keep swearing..." to the player
+			play sound "BLOCK_ANVIL_LAND" with volume 2 and pitch 2 to the player
+		else:
+			loop all players:
+				if loop-player has permission "{@NotifyPermission}":
+					send "{@prefix} %player% was muted for swearing" to loop-player
+					stop
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
