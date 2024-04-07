@@ -9,7 +9,7 @@ What is ``BetterChat``? Betterchat is a simple lightweight chat skript that allo
  - /betterchat clearchat (Clears chat for other players)
  - /staffchat [Text] (Enables staff chat so you can communicate with your staff without others seeing it)
 
-
+[Download the skript](https://github.com/iscrit/BetterChat/releases/tag/Skript) <-- Click
 
 **Permissions:**
 
@@ -21,4 +21,4 @@ What is ``BetterChat``? Betterchat is a simple lightweight chat skript that allo
 
 
 
-
+Needs SkBee to work please [Download](https://www.spigotmc.org/resources/skbee-skript-addon.75839/)
