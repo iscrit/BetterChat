@@ -1,0 +1,100 @@
+#____       _   _             _____ _           _   
+#|  _ \     | | | |           / ____| |         | |  
+#| |_) | ___| |_| |_ ___ _ __| |    | |__   __ _| |_ 
+#|  _ < / _ \ __| __/ _ \ '__| |    | '_ \ / _` | __|
+#| |_) |  __/ |_| ||  __/ |  | |____| | | | (_| | |_ 
+#|____/ \___|\__|\__\___|_|   \_____|_| |_|\__,_|\__|
+                                                    
+# Skript made by critcal, Do not distriubte under your name.
+
+# This skript requires SKBEE to work, Make sure you install the latest version of SKBEE
+
+# V1.0
+# If you have any issues make sure your skript is up to date for more features.
+# Please Report your issues in the support server or on spigotmc
+#
+
+
+options:
+    prefix: &8[&9BetterChat&8] &f
+    # This will be your prefix, it will show at the start of every response from the skript.
+
+    # Sorted Permissions
+    ownerperms: betterchat.owner
+
+    helperperms: betterchat.helper
+
+    modperms: betterchat.mod
+
+    adminperms: betterchat.admin
+# More configuration
+    skriptname: BetterChat.sk
+
+    bypassAntiSwear: betterchat.antiswear.bypass
+
+    cleachateffect: betterchat.clearchat.affect
+
+    # end of config
+
+    version: V1.0
+
+
+
+
+# please make sure the skript name is the correct name of your skript for the reload command to work :D
+
+    # Start of the actual code
+command /staffchat [<text>]:
+    aliases: /sc
+    permission: betterchat.staffchat
+    permission message: {@prefix} &fYou need betterchat.staffchat permission to access Staff Chat!
+    trigger:
+        loop all players:
+            if loop-player has permission "betterchat.staffchat":
+                send "&8[&bSTAFFCHAT&8] &7%player's display name%&8: &b%arg 1%" to loop-player
+
+
+
+command /betterchat <text>:
+    trigger:
+        if arg 1 is "Reload":
+            make player execute command "/sk reload {@skriptname}"
+        if arg 1 is "AntiSwear-Bypass":
+            make console execute command "/lp user %player% permission set {@bypassAntiSwear}"
+            send "{@prefix} your antiswear bypass was set to &aTrue" to player
+        if arg 1 is "ClearChat":
+            loop all players:
+                if loop-player has permission "{@cleachateffect}":
+                    loop 1200 times:
+                        send message " " to loop-player
+                    broadcast "&9&m-----------------------------------------"
+                    broadcast "&c&l%player% Just cleared the chat"
+                    broadcast "&9&m-----------------------------------------"
+                else:
+                    send message "{@prefix} %player% just cleared the chat for other players." to loop-player
+on tab complete of "/betterchat":
+    set tab completions for position 1 to "Reload" and "AntiSwear-Bypass" and "ClearChat"
+
+
+
+
+
+on load:
+    send message "[BetterChat]: Enabling better chat..." to console
+    wait 1 seconds
+    send message  "____       _   _             _____ _           _ " to console
+    wait 1 seconds
+    send message  "|  _ \     | | | |           / ____| |         | |" to console
+    wait 1 seconds
+    send message  "| |_) | ___| |_| |_ ___ _ __| |    | |__   __ _| |" to console
+    wait 1 seconds
+    send message  "|  _ < / _ \ __| __/ _ \ '__| |    | '_ \ / _` | __|" to console
+    wait 1 seconds
+    send message "| |_) |  __/ |_| ||  __/ |  | |____| | | | (_| | |_ " to console
+    wait 1 seconds
+    send message "|____/ \___|\__|\__\___|_|   \_____|_| |_|\__,_|\__|" to console
+    wait 1 seconds
+    send message "      BetterChat by Critical has loaded" to console
+    send message "[BetterChat] Download: {@version}" to console
+
+    
